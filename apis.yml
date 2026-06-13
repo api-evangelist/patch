@@ -1,0 +1,77 @@
+aid: patch
+name: Patch
+description: >
+  Patch is a carbon removal and offsetting REST API platform that enables businesses
+  to programmatically purchase high-quality carbon credits and integrate sustainability
+  directly into their products and services. The API provides access to a curated
+  marketplace of vetted carbon removal projects including reforestation, direct air
+  capture, enhanced weathering, and other negative emissions technologies. Developers
+  can embed carbon removal at the order level, calculating emissions estimates and
+  placing orders ranging from a single gram to thousands of tonnes of CO2 equivalent.
+  Patch combines an API-first approach with deep carbon market expertise, diligence,
+  and portfolio management tools to help organizations meet science-based net-zero
+  targets with integrity and transparency.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Carbon
+  - Carbon Credits
+  - Carbon Removal
+  - Carbon Offsets
+  - Sustainability
+  - Climate Tech
+  - Net Zero
+  - ESG
+apis:
+  - aid: patch:patch-api
+    name: Patch API
+    description: >
+      The Patch REST API allows developers to access the full carbon removal
+      marketplace, create and manage orders for carbon offsets, retrieve estimates
+      for CO2 compensation costs, browse available carbon projects, and integrate
+      sustainability features into applications. Authentication is via Bearer token
+      API keys obtained from the Patch dashboard, with separate test and production
+      key environments supported.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.patch.io/
+    baseURL: https://api.patch.io
+    tags:
+      - Carbon
+      - Carbon Credits
+      - Sustainability
+      - REST API
+    properties:
+      - type: Documentation
+        url: https://docs.patch.io/
+      - type: OpenAPI
+        url: https://api.patch.io/api-docs/index.html
+common:
+  - type: Website
+    url: https://www.patch.io/
+  - type: Documentation
+    url: https://docs.patch.io/
+  - type: GitHubOrg
+    url: https://github.com/patch-technology
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/usepatch
+  - type: Blog
+    url: https://www.patch.io/blog
+  - type: Pricing
+    url: https://www.patch.io/how-it-works
+  - type: StatusPage
+    url: https://status.patch.io
+  - type: X
+    url: https://x.com/usepatch
+  - type: Plans
+    url: plans/patch-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/patch-rate-limits.yml
+  - type: FinOps
+    url: finops/patch-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,65 @@
+name: Patch FinOps
+description: >
+  FinOps Framework FOCUS-aligned cost and usage data for the Patch carbon removal
+  and offsetting API. API costs are driven primarily by carbon credit procurement
+  (priced per tonne of CO2 equivalent) rather than by API call volume. Organizations
+  should track carbon spend as a sustainability cost center with cost allocation by
+  product line, project, or business unit using Patch's portfolio management tools.
+specificationVersion: '1.0'
+focus:
+  schema: '1.0'
+  provider: Patch
+  displayName: Patch Carbon API
+  publisher: Patch Technology, Inc.
+  currency: USD
+  billingCurrency: USD
+  costAllocation:
+    model: per-unit
+    unit: tonne CO2e
+    description: >
+      Carbon credit costs are billed per metric tonne of CO2 equivalent (tCO2e)
+      removed or offset. Costs vary by project type, vintage, quality standard
+      (e.g., Verra VCS, Gold Standard), and volume purchased. Enterprise multi-year
+      contracts may include negotiated per-tonne rates.
+  services:
+    - name: Carbon Credit Orders
+      category: Carbon Procurement
+      description: >
+        Purchase of verified carbon credits from Patch marketplace projects.
+        Cost is per tonne CO2e. Market rates vary by project type and quality.
+      pricingModel: per-unit
+      unit: tonne CO2e
+      estimatedRange: "variable — contact Patch for current project pricing"
+    - name: Estimates API
+      category: Carbon Procurement
+      description: >
+        Estimate API calls that calculate CO2 compensation costs and reserve
+        project allocations for 5 minutes. Creating an estimate also creates a
+        draft order. No separate API call charge; cost is realized upon order placement.
+      pricingModel: included
+    - name: Projects API
+      category: Data Access
+      description: >
+        Browse and filter the Patch carbon project catalog. Includes project
+        metadata such as country, type, available mass, pricing, and quality
+        standards. No separate charge for project discovery.
+      pricingModel: included
+    - name: Platform Advisory Services
+      category: Professional Services
+      description: >
+        Climate strategy, sourcing advisory, due diligence, and portfolio management
+        for enterprise customers. Pricing is included in enterprise contracts or
+        available on a custom engagement basis.
+      pricingModel: contract
+  costOptimization:
+    - recommendation: Use test API keys (key_test_ prefix) during development to avoid live transactions
+    - recommendation: Leverage the Estimates API to compare project pricing before committing to orders
+    - recommendation: Consider multi-year offtake contracts for volume discounts (avg 10-20% savings)
+    - recommendation: Allocate carbon spend by business unit or product via Patch portfolio management
+    - recommendation: Monitor spending via Patch dashboard and set budget thresholds by team or project
+  tags:
+    - carbon
+    - sustainability
+    - ESG
+    - net-zero
+    - climate

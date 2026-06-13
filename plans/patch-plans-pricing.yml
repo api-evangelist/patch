@@ -1,0 +1,49 @@
+name: Patch Plans and Pricing
+description: >
+  Patch offers flexible pricing for carbon credit procurement and API access.
+  Pricing is primarily based on the volume of carbon credits purchased (per tonne
+  of CO2 equivalent), the platform modules used, and the level of advisory services
+  required. There is no fixed public API subscription fee; instead organizations pay
+  for carbon credits procured through the platform. Enterprise customers benefit from
+  multi-year offtake contracts and volume discounts. Patch reports customers save an
+  average of 10-20% on the price of credits compared to market rates.
+specificationVersion: '0.1'
+plans:
+  - name: Spot Purchase
+    description: >
+      Flexible one-time or short-term carbon credit purchases suitable for smaller
+      programs, pilots, or single-year offsetting needs. Access to the Patch marketplace
+      and project catalog with no long-term commitment required. API access available
+      to integrate spot purchases into products.
+    url: https://www.patch.io/how-it-works
+    pricingModel: pay-as-you-go
+    pricingPage: https://www.patch.io/how-it-works
+    features:
+      - Access to Patch carbon credit marketplace
+      - Programmatic API access
+      - Orders and Estimates API
+      - Projects catalog browsing
+      - Single contract per purchase
+      - Registry-linked retirement records
+  - name: Enterprise / Multi-Year Offtake
+    description: >
+      Designed for organizations seeking long-term carbon removal commitments aligned
+      with SBTi net-zero targets. Includes multi-year offtake contracts, portfolio
+      management, priority API integrations, advisory services, global project
+      portfolios, and credit default protection where Patch replaces failed future
+      vintages at no additional cost.
+    url: https://www.patch.io/rfp
+    pricingModel: contract
+    pricingPage: https://www.patch.io/rfp
+    contact: https://www.patch.io/rfp
+    features:
+      - Multi-year offtake contracts
+      - Portfolio management and monitoring
+      - API integrations (REST API + SDKs)
+      - Advisory and strategy services
+      - Global project portfolio access
+      - Credit default protection
+      - CSRD and AB 1305 compliance support
+      - Audit-ready retirement records
+      - RFP tool for carbon credit procurement
+      - Internal carbon pricing support

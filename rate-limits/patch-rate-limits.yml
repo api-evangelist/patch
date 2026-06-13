@@ -1,0 +1,36 @@
+name: Patch API Rate Limits
+description: >
+  Patch does not publish explicit API rate limit thresholds in their public
+  documentation. The API uses Bearer token authentication and enforces fair-use
+  policies. Organizations requiring higher throughput or dedicated capacity should
+  contact Patch directly. Standard HTTP 429 Too Many Requests responses are returned
+  when limits are exceeded. Test environment keys (prefixed key_test_) are available
+  for development and integration testing without affecting production quotas.
+specificationVersion: '0.1'
+rateLimits:
+  - name: Standard API Rate Limit
+    description: >
+      Default rate limit applied to all API keys. Patch does not publish specific
+      numeric thresholds publicly. Limits are enforced per API key. When exceeded,
+      the API returns HTTP 429 Too Many Requests. Contact Patch for higher limits.
+    type: requests
+    window: rolling
+    limit: contact-for-details
+    scope: per-api-key
+    headers:
+      - name: Authorization
+        description: Bearer token API key required for all requests
+      - name: Retry-After
+        description: Returned with 429 responses indicating when to retry
+    environment:
+      - name: test
+        keyPrefix: key_test_
+        description: Sandbox/test API keys for development and integration testing
+      - name: production
+        description: Production API keys for live carbon credit purchases
+    contact: https://www.patch.io/
+    notes: >
+      Patch provides separate test and production API key environments.
+      Test keys allow full API exploration without live transactions.
+      For enterprise throughput requirements, contact Patch through their
+      RFP or sales process at https://www.patch.io/rfp.
