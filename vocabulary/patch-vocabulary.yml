@@ -1,0 +1,144 @@
+vocabulary:
+  name: Patch API Vocabulary
+  description: Domain vocabulary for the Patch carbon removal and offsetting API
+  url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/vocabulary/patch-vocabulary.yml
+  terms:
+    - term: carbon_credit
+      label: Carbon Credit
+      definition: >
+        A certificate representing one metric ton (1,000 kg) of CO2 equivalent
+        that has been reduced, avoided, or removed from the atmosphere. Patch
+        measures internally in grams to support orders from 1g to thousands of tonnes.
+
+    - term: carbon_offset
+      label: Carbon Offset
+      definition: >
+        A reduction in carbon dioxide or greenhouse gas emissions (or an increase
+        in carbon storage) made to compensate for emissions produced elsewhere.
+        Offsets are measured in CO2 equivalent (CO2e).
+
+    - term: carbon_removal
+      label: Carbon Removal
+      definition: >
+        The process of removing carbon dioxide from the atmosphere and storing it.
+        Distinct from avoidance, removal physically extracts CO2 already emitted.
+        Examples include direct air capture and reforestation.
+
+    - term: vintage_year
+      label: Vintage Year
+      definition: >
+        The year in which a carbon credit's emissions reduction or removal
+        occurred. Vintage year is important for carbon market integrity and
+        regulatory compliance.
+
+    - term: order
+      label: Order
+      definition: >
+        A transaction on the Patch platform for purchasing carbon credits.
+        Orders progress through states: draft, placed, reserved, and cancelled.
+        A placed order results in an allocation of carbon offsets.
+
+    - term: order_state
+      label: Order State
+      definition: >
+        The lifecycle state of an order. Valid states are:
+        'draft' (created but not confirmed), 'placed' (confirmed and allocated),
+        'reserved' (allocation reserved, not yet confirmed), and 'cancelled'
+        (cancelled without charge).
+
+    - term: line_item
+      label: Order Line Item
+      definition: >
+        An individual purchase allocation within a draft order. Each line item
+        references a specific carbon project and amount. Draft orders can have
+        multiple line items across different projects.
+
+    - term: project
+      label: Carbon Project
+      definition: >
+        A verified carbon removal or avoidance initiative available on the Patch
+        marketplace. Projects are curated and diligenced by Patch. Each project
+        has a specific technology type, location, verifier, and carbon standard.
+
+    - term: mechanism
+      label: Carbon Mechanism
+      definition: >
+        The category of carbon impact. 'avoidance' means preventing future
+        emissions (e.g., REDD+ forest protection). 'removal' means actively
+        extracting CO2 already in the atmosphere (e.g., direct air capture).
+
+    - term: technology_type
+      label: Technology Type
+      definition: >
+        The carbon removal or avoidance technology category used by a project.
+        Examples include REDD+, direct air capture, enhanced weathering,
+        biochar, and reforestation. Technology types are organized into parent
+        categories such as Nature-Based Solutions and Engineered Removals.
+
+    - term: verifier
+      label: Carbon Verifier
+      definition: >
+        An independent third-party organization that audits and validates carbon
+        projects to ensure they meet claimed impact standards. Common verifiers
+        include Verra, Gold Standard, and the American Carbon Registry.
+
+    - term: standard
+      label: Carbon Standard
+      definition: >
+        A certification framework that defines quality criteria for carbon
+        credits. Major standards include the Verified Carbon Standard (VCS),
+        Gold Standard, and the Clean Development Mechanism (CDM).
+
+    - term: sdg
+      label: Sustainable Development Goal
+      definition: >
+        One of the 17 goals in the United Nations 2030 Agenda for Sustainable
+        Development. Carbon projects on the Patch platform often contribute to
+        multiple SDGs beyond climate action (SDG 13).
+
+    - term: issuance_type
+      label: Issuance Type
+      definition: >
+        How the carbon credit was generated. Types include avoided_emissions
+        (avoidance credits) and carbon_removal (removal credits). Determines
+        the type of environmental benefit purchased.
+
+    - term: issued_to
+      label: Issued To
+      definition: >
+        The entity (name and email) to whom carbon credits are formally issued.
+        Used for retirement certificates and registry records.
+
+    - term: registry_url
+      label: Registry URL
+      definition: >
+        A URL linking to the public carbon registry record for a completed order.
+        Registries provide third-party verification of credit retirement.
+
+    - term: metadata
+      label: Order Metadata
+      definition: >
+        Custom key-value pairs that can be attached to an order to link it to
+        external systems. Common uses include customer IDs, invoice numbers,
+        or shipping order references for per-transaction offsetting.
+
+    - term: patch_fee
+      label: Patch Fee
+      definition: >
+        The platform fee charged by Patch for facilitating a carbon offset
+        transaction. Expressed in the smallest unit of the order currency
+        (e.g., cents for USD).
+
+    - term: bearer_auth
+      label: Bearer Token Authentication
+      definition: >
+        The authentication mechanism used by the Patch API. API keys are
+        obtained from the Patch dashboard and transmitted as HTTP Bearer
+        tokens. Separate test and production keys are provided.
+
+    - term: net_zero
+      label: Net Zero
+      definition: >
+        A state in which greenhouse gas emissions from operations are balanced
+        by equivalent carbon removals. Patch helps organizations progress toward
+        science-based net-zero targets through high-quality carbon credit procurement.

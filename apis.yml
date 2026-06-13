@@ -49,6 +49,8 @@ apis:
         url: https://docs.patch.io/
       - type: OpenAPI
         url: https://api.patch.io/api-docs/index.html
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/openapi/patch-patch-api-openapi.yml
 common:
   - type: Website
     url: https://www.patch.io/

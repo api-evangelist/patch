@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/json-schema/patch-order-schema.json",
+  "title": "Patch Order",
+  "description": "A carbon offset order placed through the Patch API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the order"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the order was created"
+    },
+    "production": {
+      "type": "boolean",
+      "description": "Whether this is a production (vs. test) order"
+    },
+    "state": {
+      "type": "string",
+      "enum": ["draft", "placed", "cancelled", "reserved"],
+      "description": "Current state of the order"
+    },
+    "amount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Amount of carbon offset in grams of CO2 equivalent"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement (g, kg, t)"
+    },
+    "price": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Price in the smallest currency unit (e.g., cents)"
+    },
+    "patch_fee": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Patch platform fee in the smallest currency unit"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 currency code"
+    },
+    "registry_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the registry record for this order"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Custom key-value metadata attached to the order"
+    },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OrderLineItem"
+      },
+      "description": "Individual line items within the order"
+    },
+    "issued_to": {
+      "$ref": "#/definitions/OrderIssuedTo"
+    }
+  },
+  "definitions": {
+    "OrderIssuedTo": {
+      "type": "object",
+      "description": "Entity to whom the carbon credits are issued",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the recipient"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the recipient"
+        }
+      }
+    },
+    "OrderLineItem": {
+      "type": "object",
+      "description": "An individual line item within an order",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the line item"
+        },
+        "project": {
+          "type": "object",
+          "description": "Reference to the carbon project",
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" }
+          }
+        },
+        "vintage_year": {
+          "type": "integer",
+          "description": "Specific vintage year for the carbon credits"
+        },
+        "vintage_start_year": {
+          "type": "integer",
+          "description": "Start year of the vintage range"
+        },
+        "vintage_end_year": {
+          "type": "integer",
+          "description": "End year of the vintage range"
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Amount of carbon offset in grams of CO2 equivalent"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit of measurement"
+        },
+        "price": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Price in the smallest currency unit"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        }
+      }
+    }
+  }
+}

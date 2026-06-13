@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/json-schema/patch-project-schema.json",
+  "title": "Patch Project",
+  "description": "A carbon removal project available on the Patch platform",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the project"
+    },
+    "production": {
+      "type": "boolean",
+      "description": "Whether this is a production (vs. test) project"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the project"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the project"
+    },
+    "mechanism": {
+      "type": "string",
+      "enum": ["avoidance", "removal"],
+      "description": "Carbon mechanism: avoidance or removal"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 country code"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state of the project"
+    },
+    "issuance_type": {
+      "type": "string",
+      "description": "Type of carbon credit issuance"
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "Geographic latitude"
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Geographic longitude"
+    },
+    "project_partner": {
+      "type": "string",
+      "description": "Name of the project partner or developer"
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "format": "uri" }
+        }
+      },
+      "description": "Photos of the project"
+    },
+    "verifier": {
+      "type": "string",
+      "description": "Third-party verifier or certifier"
+    },
+    "standard": {
+      "type": "object",
+      "description": "Carbon standard or certification",
+      "properties": {
+        "name": { "type": "string" },
+        "link": { "type": "string", "format": "uri" }
+      }
+    },
+    "sdgs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "integer", "minimum": 1, "maximum": 17 },
+          "title": { "type": "string" },
+          "link": { "type": "string", "format": "uri" }
+        }
+      },
+      "description": "UN Sustainable Development Goals supported"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Short tagline for the project"
+    },
+    "technology_type": {
+      "type": "object",
+      "description": "Carbon removal technology type",
+      "properties": {
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "parent_technology_type": {
+          "type": "object",
+          "properties": {
+            "slug": { "type": "string" },
+            "name": { "type": "string" }
+          }
+        }
+      }
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      },
+      "description": "Key highlights of the project"
+    },
+    "inventory": {
+      "type": "object",
+      "description": "Inventory information",
+      "properties": {
+        "amount_available": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Amount of carbon credits available in grams"
+        },
+        "unit": { "type": "string" }
+      }
+    },
+    "disclaimers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "content": { "type": "string" }
+        }
+      },
+      "description": "Legal disclaimers for the project"
+    }
+  }
+}

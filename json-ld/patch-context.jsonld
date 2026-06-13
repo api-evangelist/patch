@@ -1,0 +1,147 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "patch": "https://www.patch.io/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Order": "patch:Order",
+    "Project": "patch:Project",
+    "OrderLineItem": "patch:OrderLineItem",
+    "TechnologyType": "patch:TechnologyType",
+
+    "id": "@id",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "production": {
+      "@id": "patch:production",
+      "@type": "xsd:boolean"
+    },
+    "state": "patch:state",
+    "amount": {
+      "@id": "patch:amount",
+      "@type": "xsd:integer"
+    },
+    "unit": "patch:unit",
+    "price": {
+      "@id": "schema:price",
+      "@type": "xsd:integer"
+    },
+    "patch_fee": {
+      "@id": "patch:platformFee",
+      "@type": "xsd:integer"
+    },
+    "currency": {
+      "@id": "schema:priceCurrency"
+    },
+    "registry_url": {
+      "@id": "patch:registryUrl",
+      "@type": "@id"
+    },
+    "metadata": "patch:metadata",
+    "line_items": {
+      "@id": "patch:lineItems",
+      "@container": "@set"
+    },
+    "issued_to": "patch:issuedTo",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "mechanism": "patch:mechanism",
+    "country": {
+      "@id": "schema:addressCountry"
+    },
+    "latitude": {
+      "@id": "schema:latitude",
+      "@type": "xsd:float"
+    },
+    "longitude": {
+      "@id": "schema:longitude",
+      "@type": "xsd:float"
+    },
+    "project_partner": "patch:projectPartner",
+    "photos": {
+      "@id": "schema:image",
+      "@container": "@set"
+    },
+    "verifier": "patch:verifier",
+    "standard": "patch:standard",
+    "sdgs": {
+      "@id": "patch:sustainableDevelopmentGoals",
+      "@container": "@set"
+    },
+    "tagline": "schema:slogan",
+    "technology_type": "patch:technologyType",
+    "highlights": {
+      "@id": "patch:highlights",
+      "@container": "@set"
+    },
+    "inventory": "patch:inventory",
+    "disclaimers": {
+      "@id": "patch:disclaimers",
+      "@container": "@set"
+    },
+    "issuance_type": "patch:issuanceType",
+    "project_id": "patch:projectId",
+    "order_id": "patch:orderId",
+    "serial_number": "patch:serialNumber",
+    "vintage_year": {
+      "@id": "patch:vintageYear",
+      "@type": "xsd:integer"
+    },
+    "vintage_start_year": {
+      "@id": "patch:vintageStartYear",
+      "@type": "xsd:integer"
+    },
+    "vintage_end_year": {
+      "@id": "patch:vintageEndYear",
+      "@type": "xsd:integer"
+    },
+    "total_price": {
+      "@id": "patch:totalPrice",
+      "@type": "xsd:integer"
+    },
+    "amount_available": {
+      "@id": "patch:amountAvailable",
+      "@type": "xsd:integer"
+    },
+    "slug": "patch:slug",
+    "parent_technology_type": "patch:parentTechnologyType",
+    "has_more": {
+      "@id": "patch:hasMore",
+      "@type": "xsd:boolean"
+    },
+    "next_page": {
+      "@id": "patch:nextPage",
+      "@type": "xsd:integer"
+    },
+    "current_page": {
+      "@id": "patch:currentPage",
+      "@type": "xsd:integer"
+    },
+    "success": {
+      "@id": "patch:success",
+      "@type": "xsd:boolean"
+    },
+    "error": "patch:error",
+    "data": "patch:data",
+    "meta": "patch:meta",
+    "email": "schema:email",
+    "number": {
+      "@id": "patch:sdgNumber",
+      "@type": "xsd:integer"
+    },
+    "link": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "content": "patch:disclaimerContent",
+    "title": "patch:highlightTitle",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    }
+  }
+}

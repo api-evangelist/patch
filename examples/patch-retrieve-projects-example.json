@@ -1,0 +1,81 @@
+{
+  "example": "Retrieve carbon projects",
+  "description": "Example request and response for listing available carbon removal projects via the Patch API",
+  "request": {
+    "method": "GET",
+    "url": "https://api.patch.io/v1/projects?page=1&country=BR&minimum_available_mass=1000",
+    "headers": {
+      "Authorization": "Bearer sk_test_your_api_key",
+      "Patch-Version": 2
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "success": true,
+      "error": null,
+      "data": [
+        {
+          "id": "pro_test_8df3e45fa",
+          "production": false,
+          "name": "Rainforest Protection in Brazil",
+          "description": "This project protects critical rainforest habitat in the Amazon basin through community-based conservation.",
+          "mechanism": "avoidance",
+          "country": "BR",
+          "state": "active",
+          "issuance_type": "avoided_emissions",
+          "latitude": -3.4653,
+          "longitude": -62.2159,
+          "project_partner": "Amazon Conservation Partner",
+          "photos": [
+            {
+              "url": "https://patch-technology.imgix.net/projects/rainforest-brazil.jpg"
+            }
+          ],
+          "verifier": "Verra",
+          "standard": {
+            "name": "Verified Carbon Standard (VCS)",
+            "link": "https://verra.org/programs/verified-carbon-standard/"
+          },
+          "sdgs": [
+            {
+              "number": 13,
+              "title": "Climate Action",
+              "link": "https://sdgs.un.org/goals/goal13"
+            },
+            {
+              "number": 15,
+              "title": "Life on Land",
+              "link": "https://sdgs.un.org/goals/goal15"
+            }
+          ],
+          "tagline": "Protecting the lungs of the Earth",
+          "technology_type": {
+            "slug": "redd",
+            "name": "REDD+",
+            "parent_technology_type": {
+              "slug": "nature-based",
+              "name": "Nature-Based Solutions"
+            }
+          },
+          "highlights": [
+            {
+              "title": "Community Benefit",
+              "description": "Supports 500 local families through sustainable livelihoods"
+            }
+          ],
+          "inventory": {
+            "amount_available": 500000000,
+            "unit": "g"
+          },
+          "disclaimers": []
+        }
+      ],
+      "meta": {
+        "has_more": true,
+        "next_page": 2,
+        "current_page": 1
+      }
+    }
+  }
+}
