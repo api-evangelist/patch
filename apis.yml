@@ -12,7 +12,7 @@ description: >
   and portfolio management tools to help organizations meet science-based net-zero
   targets with integrity and transparency.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -36,7 +36,7 @@ apis:
       sustainability features into applications. Authentication is via Bearer token
       API keys obtained from the Patch dashboard, with separate test and production
       key environments supported.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.patch.io/
     baseURL: https://api.patch.io
     tags:
