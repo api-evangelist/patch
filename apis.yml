@@ -52,6 +52,12 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/openapi/patch-patch-api-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/patch-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/patch-domain-security.yml
+  - type: Authentication
+    url: authentication/patch-authentication.yml
   - type: Website
     url: https://www.patch.io/
   - type: Documentation

@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/patch-patch-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearer_auth
+  type: http
+  scheme: bearer
+  description: Bearer token API key obtained from the Patch dashboard. Use test keys for sandbox
+    and production keys for live orders.
+  sources:
+  - openapi/patch-patch-api-openapi.yml
