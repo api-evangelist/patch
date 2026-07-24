@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Patch Order Line Items Technology Types API
+  description: 'The Patch REST API allows developers to access the full carbon removal marketplace, create and manage orders for carbon offsets, retrieve estimates for CO2 compensation costs, browse available carbon projects, and integrate sustainability features into applications. Authentication is via Bearer token API keys obtained from the Patch dashboard, with separate test and production key environments supported.
+
+    '
+  version: '2'
+  contact:
+    email: engineering@usepatch.com
+  x-api-id: patch:patch-api
+servers:
+- url: https://api.patch.io
+  description: Patch API production server
+security:
+- bearer_auth: []
+tags:
+- name: Technology Types
+  description: Retrieve available carbon removal technology types
+paths:
+  /v1/projects/technology_types:
+    get:
+      summary: Retrieves the list of technology types
+      description: Retrieves a list of all technology types.
+      operationId: retrieve_technology_types
+      tags:
+      - Technology Types
+      parameters:
+      - name: Patch-Version
+        in: header
+        schema:
+          type: integer
+          default: 2
+      responses:
+        '200':
+          description: A list of technology types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TechnologyTypeListResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        success:
+          type: boolean
+          example: false
+          description: Always false for error responses
+        error:
+          type: string
+          description: Error message describing what went wrong
+    TechnologyType:
+      type: object
+      description: A carbon removal technology type
+      properties:
+        slug:
+          type: string
+          description: URL-friendly slug identifier
+        name:
+          type: string
+          description: Human-readable name of the technology type
+        parent_technology_type:
+          $ref: '#/components/schemas/ParentTechnologyType'
+    MetaIndexObject:
+      type: object
+      description: Pagination metadata
+      properties:
+        has_more:
+          type: boolean
+          description: Whether there are more records to retrieve
+        next_page:
+          type: integer
+          nullable: true
+          description: The next page number, if available
+        current_page:
+          type: integer
+          description: The current page number
+    TechnologyTypeListResponse:
+      type: object
+      description: API response wrapping a list of TechnologyTypes
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful
+        error:
+          type: string
+          nullable: true
+          description: Error message if the request failed
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TechnologyType'
+        meta:
+          $ref: '#/components/schemas/MetaIndexObject'
+    ParentTechnologyType:
+      type: object
+      description: Parent category for a technology type
+      properties:
+        slug:
+          type: string
+          description: URL-friendly slug identifier
+        name:
+          type: string
+          description: Human-readable name of the parent technology type
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token API key obtained from the Patch dashboard. Use test keys for sandbox and production keys for live orders.
+
+        '

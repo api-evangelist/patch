@@ -1,0 +1,332 @@
+openapi: 3.0.3
+info:
+  title: Patch Order Line Items Projects API
+  description: 'The Patch REST API allows developers to access the full carbon removal marketplace, create and manage orders for carbon offsets, retrieve estimates for CO2 compensation costs, browse available carbon projects, and integrate sustainability features into applications. Authentication is via Bearer token API keys obtained from the Patch dashboard, with separate test and production key environments supported.
+
+    '
+  version: '2'
+  contact:
+    email: engineering@usepatch.com
+  x-api-id: patch:patch-api
+servers:
+- url: https://api.patch.io
+  description: Patch API production server
+security:
+- bearer_auth: []
+tags:
+- name: Projects
+  description: Browse and retrieve carbon removal projects
+paths:
+  /v1/projects:
+    get:
+      summary: Retrieves a list of projects
+      description: 'Retrieves a list of projects available for purchase on Patch''s platform.
+
+        '
+      operationId: retrieve_projects
+      tags:
+      - Projects
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+        description: Page number for pagination
+      - name: country
+        in: query
+        schema:
+          type: string
+        description: Filter by country code
+      - name: type
+        in: query
+        schema:
+          type: string
+        description: Filter by project type
+      - name: minimum_available_mass
+        in: query
+        schema:
+          type: integer
+        description: Filter by minimum available mass in grams
+      - name: Accept-Language
+        in: header
+        schema:
+          type: string
+        description: Language preference for project descriptions
+      - name: Patch-Version
+        in: header
+        schema:
+          type: integer
+          default: 2
+      responses:
+        '200':
+          description: A list of projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectListResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/projects/{id}:
+    get:
+      summary: Retrieves a project
+      description: Retrieves a project available on Patch's platform.
+      operationId: retrieve_project
+      tags:
+      - Projects
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The project ID
+      - name: Accept-Language
+        in: header
+        schema:
+          type: string
+        description: Language preference for project description
+      - name: Patch-Version
+        in: header
+        schema:
+          type: integer
+          default: 2
+      responses:
+        '200':
+          description: The project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    TechnologyType:
+      type: object
+      description: A carbon removal technology type
+      properties:
+        slug:
+          type: string
+          description: URL-friendly slug identifier
+        name:
+          type: string
+          description: Human-readable name of the technology type
+        parent_technology_type:
+          $ref: '#/components/schemas/ParentTechnologyType'
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        success:
+          type: boolean
+          example: false
+          description: Always false for error responses
+        error:
+          type: string
+          description: Error message describing what went wrong
+    Inventory:
+      type: object
+      description: Inventory information for a project
+      properties:
+        amount_available:
+          type: integer
+          description: Amount of carbon credits available in grams
+        unit:
+          type: string
+          description: Unit of measurement
+    Photo:
+      type: object
+      description: A photo associated with a project
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL of the photo
+    MetaIndexObject:
+      type: object
+      description: Pagination metadata
+      properties:
+        has_more:
+          type: boolean
+          description: Whether there are more records to retrieve
+        next_page:
+          type: integer
+          nullable: true
+          description: The next page number, if available
+        current_page:
+          type: integer
+          description: The current page number
+    ProjectListResponse:
+      type: object
+      description: API response wrapping a list of Projects
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful
+        error:
+          type: string
+          nullable: true
+          description: Error message if the request failed
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        meta:
+          $ref: '#/components/schemas/MetaIndexObject'
+    Standard:
+      type: object
+      description: Carbon standard or certification
+      properties:
+        name:
+          type: string
+          description: Name of the standard (e.g., Gold Standard, VCS)
+        link:
+          type: string
+          format: uri
+          description: URL to the standard's website
+    ProjectResponse:
+      type: object
+      description: API response wrapping a Project
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was successful
+        error:
+          type: string
+          nullable: true
+          description: Error message if the request failed
+        data:
+          $ref: '#/components/schemas/Project'
+    Project:
+      type: object
+      description: A carbon removal project available on the Patch platform
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the project
+        production:
+          type: boolean
+          description: Whether this is a production (vs. test) project
+        name:
+          type: string
+          description: Name of the project
+        description:
+          type: string
+          description: Detailed description of the project
+        mechanism:
+          type: string
+          description: Carbon removal mechanism (e.g., avoidance, removal)
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code where the project is located
+        state:
+          type: string
+          description: Current state of the project
+        issuance_type:
+          type: string
+          description: Type of carbon credit issuance
+        latitude:
+          type: number
+          format: float
+          description: Geographic latitude of the project
+        longitude:
+          type: number
+          format: float
+          description: Geographic longitude of the project
+        project_partner:
+          type: string
+          description: Name of the project partner or developer
+        photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Photo'
+          description: Photos of the project
+        verifier:
+          type: string
+          description: Third-party verifier or certifier
+        standard:
+          $ref: '#/components/schemas/Standard'
+        sdgs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sdg'
+          description: UN Sustainable Development Goals supported by this project
+        tagline:
+          type: string
+          description: Short tagline for the project
+        technology_type:
+          $ref: '#/components/schemas/TechnologyType'
+        highlights:
+          type: array
+          items:
+            $ref: '#/components/schemas/Highlight'
+          description: Key highlights of the project
+        inventory:
+          $ref: '#/components/schemas/Inventory'
+        disclaimers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Disclaimer'
+          description: Legal disclaimers for the project
+    Highlight:
+      type: object
+      description: A key highlight of a project
+      properties:
+        title:
+          type: string
+          description: Title of the highlight
+        description:
+          type: string
+          description: Description of the highlight
+    Sdg:
+      type: object
+      description: UN Sustainable Development Goal
+      properties:
+        number:
+          type: integer
+          description: SDG number (1-17)
+        title:
+          type: string
+          description: SDG title
+        link:
+          type: string
+          format: uri
+          description: URL to the SDG page
+    Disclaimer:
+      type: object
+      description: A legal disclaimer for a project
+      properties:
+        content:
+          type: string
+          description: Text of the disclaimer
+    ParentTechnologyType:
+      type: object
+      description: Parent category for a technology type
+      properties:
+        slug:
+          type: string
+          description: URL-friendly slug identifier
+        name:
+          type: string
+          description: Human-readable name of the parent technology type
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token API key obtained from the Patch dashboard. Use test keys for sandbox and production keys for live orders.
+
+        '
