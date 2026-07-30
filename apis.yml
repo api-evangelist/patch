@@ -12,7 +12,20 @@ description: >
   and portfolio management tools to help organizations meet science-based net-zero
   targets with integrity and transparency.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/patch.png
 url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -27,30 +40,54 @@ tags:
   - Net Zero
   - ESG
 apis:
-  - aid: patch:patch-api
-    name: Patch API
-    description: >
-      The Patch REST API allows developers to access the full carbon removal
-      marketplace, create and manage orders for carbon offsets, retrieve estimates
-      for CO2 compensation costs, browse available carbon projects, and integrate
-      sustainability features into applications. Authentication is via Bearer token
-      API keys obtained from the Patch dashboard, with separate test and production
-      key environments supported.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.patch.io/
-    baseURL: https://api.patch.io
-    tags:
-      - Carbon
-      - Carbon Credits
-      - Sustainability
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://docs.patch.io/
-      - type: OpenAPI
-        url: https://api.patch.io/api-docs/index.html
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/patch/refs/heads/main/openapi/patch-patch-api-openapi.yml
+- aid: patch:patch-order-line-items-api
+  name: Patch Order Line Items API
+  description: Manage individual line items within draft orders
+  humanURL: https://docs.patch.io/
+  baseURL: https://api.patch.io
+  tags:
+  - Order Line Items
+  properties:
+  - type: OpenAPI
+    url: openapi/patch-order-line-items-api-openapi.yml
+  - type: Documentation
+    url: https://docs.patch.io/
+- aid: patch:patch-orders-api
+  name: Patch Orders API
+  description: Create and manage carbon offset orders
+  humanURL: https://docs.patch.io/
+  baseURL: https://api.patch.io
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/patch-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.patch.io/
+- aid: patch:patch-projects-api
+  name: Patch Projects API
+  description: Browse and retrieve carbon removal projects
+  humanURL: https://docs.patch.io/
+  baseURL: https://api.patch.io
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/patch-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.patch.io/
+- aid: patch:patch-technology-types-api
+  name: Patch Technology Types API
+  description: Retrieve available carbon removal technology types
+  humanURL: https://docs.patch.io/
+  baseURL: https://api.patch.io
+  tags:
+  - Technology Types
+  properties:
+  - type: OpenAPI
+    url: openapi/patch-technology-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.patch.io/
 common:
   - type: AgenticAccess
     url: agentic-access/patch-agentic-access.yml
