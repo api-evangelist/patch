@@ -1,0 +1,20 @@
+{
+  "provider": "patch",
+  "sources": [
+    "patch-order-line-items-api-openapi.yml",
+    "patch-orders-api-openapi.yml",
+    "patch-projects-api-openapi.yml",
+    "patch-technology-types-api-openapi.yml"
+  ],
+  "outputs": [
+    "patch-order-line-items-api-openapi.yml",
+    "patch-orders-api-openapi.yml",
+    "patch-projects-api-openapi.yml",
+    "patch-technology-types-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
